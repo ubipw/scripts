@@ -1,0 +1,59 @@
+-- Luaman Exploit
+
+local ScreenGui = Instance.new("ScreenGui")
+local Speed16Button = Instance.new("TextButton")
+local Speed30Button = Instance.new("TextButton")
+local Speed50Button = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Speed16Button.Name = "Speed16Button"
+Speed16Button.Parent = ScreenGui
+Speed16Button.BackgroundColor3 = Color3.fromRGB(197, 197, 197)
+Speed16Button.Position = UDim2.new(0.889795899, 0, 0.421965361, 0)
+Speed16Button.Size = UDim2.new(0, 67, 0, 37)
+Speed16Button.Font = Enum.Font.SourceSans
+Speed16Button.Text = "Normal Speed"
+Speed16Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Speed16Button.TextScaled = true
+Speed16Button.TextSize = 14.000
+Speed16Button.TextWrapped = true
+Speed16Button.MouseButton1Click:Connect(function()
+	player = game.Players.LocalPlayer
+	player.Character.Humanoid.WalkSpeed = 16
+end)
+
+Speed30Button.Name = "Speed30Button"
+Speed30Button.Parent = ScreenGui
+Speed30Button.BackgroundColor3 = Color3.fromRGB(115, 136, 255)
+Speed30Button.Position = UDim2.new(0.889795899, 0, 0.528901756, 0)
+Speed30Button.Size = UDim2.new(0, 67, 0, 37)
+Speed30Button.Font = Enum.Font.SourceSans
+Speed30Button.Text = "x30 Speed"
+Speed30Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Speed30Button.TextScaled = true
+Speed30Button.TextSize = 14.000
+Speed30Button.TextWrapped = true
+Speed30Button.MouseButton1Click:Connect(function()
+	player = game.Players.LocalPlayer
+	player.Character.Humanoid.WalkSpeed = 30
+end)
+
+Speed50Button.Name = "Speed50Button"
+Speed50Button.Parent = ScreenGui
+Speed50Button.BackgroundColor3 = Color3.fromRGB(255, 0, 4)
+Speed50Button.Position = UDim2.new(0.889795899, 0, 0.635838151, 0)
+Speed50Button.Size = UDim2.new(0, 67, 0, 37)
+Speed50Button.Font = Enum.Font.SourceSans
+Speed50Button.Text = "x50 Speed"
+Speed50Button.TextColor3 = Color3.fromRGB(0, 0, 0)
+Speed50Button.TextScaled = true
+Speed50Button.TextSize = 14.000
+Speed50Button.TextWrapped = true
+Speed50Button.MouseButton1Click:Connect(function()
+	player = game.Players.LocalPlayer
+	player.Character.Humanoid.WalkSpeed = 50
+end)
