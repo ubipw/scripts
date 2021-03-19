@@ -1,0 +1,215 @@
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/AikaV3rm/UiLib/master/Lib.lua')))()
+
+
+---Window---
+local w = library:CreateWindow("Auto Stuff")
+local Pets = library:CreateWindow("Pets Stuff")
+local Tp = library:CreateWindow("Teleports")
+local d = library:CreateWindow("Extra")
+local ce = library:CreateWindow("Credits")
+
+
+---Folder---
+local b = w:CreateFolder("Auto Farm")
+local c = w:CreateFolder("Auto Buy")
+local f = Pets:CreateFolder("Pet Buy")
+local g = Tp:CreateFolder("Teleport")
+local ex = d:CreateFolder("Extras")
+local cs = ce:CreateFolder("Made By Ubimos")
+
+---Strings---
+
+
+local AutoFarmEnabled = false
+local ThunderBug = false
+local AutoBuyCosmo = false
+local AutoBuyCosmo = false
+local AutoBuyBackPack = false
+local AutoBuyRank = false
+local AutoBuySpeed = false
+local AutoBuyThunder = false
+local AutoSell = false
+local BuyPet = false
+local PetBox = "Chicken Egg"
+local check = false
+local ZoneBox = "Spawn"
+local MakeShiny = false
+
+
+---The Gui---
+
+
+
+b:Toggle("Auto Farm",function(bool)
+AutoFarmEnabled = bool
+end)
+b:Toggle("Auto Sell",function(bool)
+AutoSell = bool
+end)
+
+c:Toggle("Auto Buy Cosmo",function(bool)
+AutoBuyCosmo = bool
+end)
+
+c:Toggle("Auto Buy Speed",function(bool)
+AutoBuySpeed = bool
+end)
+
+c:Toggle("Auto Buy Thunder",function(bool)
+AutoBuyThunder = bool
+end)
+
+c:Toggle("Auto Buy Rank",function(bool)
+ AutoBuyRank = bool
+end)
+c:Toggle("Auto Buy BackPack",function(bool)
+AutoBuyBackPack = bool
+end)
+ex:Slider("Walk Speed",{
+    min = 16; 
+    max = 100; 
+},function(value)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+ex:Slider("Jump Power",{
+    min = 50; 
+    max = 300; 
+},function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+f:Dropdown("Chicken Egg",{"Chicken Egg","Unicorn Egg","Bull Egg","Dragon Egg","Ailen Egg","Candy Egg","Ice Egg"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+    PetBox = mob
+end)
+f:Toggle("Activate",function(bool)
+BuyPet = bool
+end)
+
+f:Toggle("Make Shiny",function(bool)
+MakeShiny = bool
+end)
+
+g:Button("Tp To last Land",function()
+    game:GetService("ReplicatedStorage").Remotes.TP:FireServer()
+end)
+g:Dropdown("Spawn",{"Spawn","Unicorn Zone","Bull Zone","Dragon Zone","Ailen Zone","Candy Zone","Ice Zone","VIP Zone"},true,function(mob)
+ZoneBox = mob
+end)
+g:Button("Teleport",function()
+    if ZoneBox == "Spawn" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(171.453, 8.49317, 28.3361))
+    end
+
+    if ZoneBox == "Unicorn Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(161.104, -1.48857, 256.575))
+    end
+
+    if ZoneBox == "Bull Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(159.921, -1.48857, 416.071))
+    end
+
+    if ZoneBox == "Dragon Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(160.217, -1.48857, 575.396))
+    end
+
+    if ZoneBox == "Ailen Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(157.098, -1.48857, 734.398))
+    end
+
+    if ZoneBox == "Candy Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(157.098, -1.48857, 894.158))
+    end
+
+    if ZoneBox == "Ice Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(157.098, -1.48857, 1053.87))
+    end
+
+    if ZoneBox == "VIP Zone" then
+        game.Players.LocalPlayer.Character:MoveTo(Vector3.new(35.9677, 1.60333, 93.6648))
+    end
+end)
+
+cs:Label("Made By Ubimos#1337",{
+    TextSize = 15;
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(38, 38, 38);
+})
+
+
+cs:Button("Copy Link My server",function()
+setclipboard("https://discord.gg/jZHY4up")
+end)
+
+
+---Scripts---
+
+
+
+while wait(0.1) do
+    pcall(function()
+if AutoFarmEnabled == true then
+game:GetService("ReplicatedStorage").CoinToPlayer:FireServer(9)
+game:GetService("ReplicatedStorage").Remotes.Skill:FireServer("Cosmos",{math.huge,0,0,0})
+game:GetService("ReplicatedStorage").Remotes.Sell:FireServer()
+end
+
+if AutoSell == true then
+game:GetService("ReplicatedStorage").Remotes.Sell:FireServer()
+end
+
+if AutoBuyCosmo == true then
+    game:GetService("ReplicatedStorage").Remotes.BuyAllSkills:InvokeServer("Cosmos")
+end
+
+if AutoBuySpeed == true then
+    game:GetService("ReplicatedStorage").Remotes.BuyAllSkills:InvokeServer("Speed")
+end
+if AutoBuyThunder == true then
+    game:GetService("ReplicatedStorage").Remotes.BuyAllSkills:InvokeServer("Thunder")
+end
+if AutoBuyBackPack == true then
+    game:GetService("ReplicatedStorage").Remotes.BuyAllBackpacks:InvokeServer()
+end
+
+if AutoBuyRank == true then
+    game:GetService("ReplicatedStorage").Remotes.Rank:InvokeServer()
+end
+
+if ThunderBug == true then
+    game:GetService("ReplicatedStorage").Remotes.Skill:FireServer("Thunder",{math.huge,0,0,0})
+end
+if BuyPet == true then
+    if PetBox == "Chicken Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(1)
+    end
+
+    if PetBox == "Unicorn Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(2)
+    end
+
+    if PetBox == "Bull Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(3)
+    end
+
+    if PetBox == "Dragon Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(4)
+    end
+
+    if PetBox == "Ailen Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(5)
+    end
+
+        if PetBox == "Candy Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(6)
+        end
+
+    if PetBox == "Ice Egg" then
+        game:GetService("ReplicatedStorage").Remotes.BuyPets:InvokeServer(7)
+    end
+
+    end
+    if MakeShiny == true then
+        game:GetService("ReplicatedStorage").Remotes.PetManager:InvokeServer("Upgrade" , 1 , 143)
+    end
+
+end)
+end
